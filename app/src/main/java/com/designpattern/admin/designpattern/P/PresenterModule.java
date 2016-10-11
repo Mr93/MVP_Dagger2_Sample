@@ -1,10 +1,8 @@
 package com.designpattern.admin.designpattern.P;
 
 import android.app.Activity;
-import android.content.Context;
 
-import com.designpattern.admin.designpattern.V.InterfaceViewForPresenter;
-import com.designpattern.admin.designpattern.V.MainActivity;
+import com.designpattern.admin.designpattern.V.RequiredViewOps;
 
 import javax.inject.Singleton;
 
@@ -17,13 +15,13 @@ import dagger.Provides;
 
 @Module
 public class PresenterModule {
-    private InterfacePresenterForView interfacePresenterForView;
+    private ProvidedPresenterOps providedPresenterOps;
 
-    public PresenterModule(InterfaceViewForPresenter interfaceViewForPresenter, Activity activity){
-        this.interfacePresenterForView = new DataManagerPresenter(interfaceViewForPresenter, activity);
+    public PresenterModule(RequiredViewOps requiredViewOps, Activity activity){
+        this.providedPresenterOps = new DataManagerPresenter(requiredViewOps, activity);
     }
 
-    @Provides @Singleton public InterfacePresenterForView providePresenterForView(){
-        return interfacePresenterForView;
+    @Provides @Singleton public ProvidedPresenterOps providePresenterForView(){
+        return providedPresenterOps;
     }
 }
