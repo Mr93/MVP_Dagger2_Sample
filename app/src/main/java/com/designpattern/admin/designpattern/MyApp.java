@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.app.Application;
 
 import com.designpattern.admin.designpattern.P.PresenterModule;
-import com.designpattern.admin.designpattern.V.InterfaceViewForPresenter;
+import com.designpattern.admin.designpattern.V.RequiredViewOps;
 
 /**
  * Created by prora on 10/9/2016.
@@ -19,9 +19,9 @@ public class MyApp extends Application {
         super.onCreate();
     }
 
-    public void createPresenterComponent(InterfaceViewForPresenter interfaceViewForPresenter, Activity activity){
+    public void createPresenterComponent(RequiredViewOps requiredViewOps, Activity activity){
         presenterComponent = DaggerPresenterComponent.builder()
-                .presenterModule(new PresenterModule(interfaceViewForPresenter, activity))
+                .presenterModule(new PresenterModule(requiredViewOps, activity))
                 .build();
     }
 
