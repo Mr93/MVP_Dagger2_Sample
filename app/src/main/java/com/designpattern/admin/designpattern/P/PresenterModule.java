@@ -2,6 +2,7 @@ package com.designpattern.admin.designpattern.P;
 
 import android.app.Activity;
 
+import com.designpattern.admin.designpattern.M.Model;
 import com.designpattern.admin.designpattern.V.RequiredViewOps;
 
 import javax.inject.Singleton;
@@ -19,6 +20,7 @@ public class PresenterModule {
 
     public PresenterModule(RequiredViewOps requiredViewOps, Activity activity){
         this.providedPresenterOps = new DataManagerPresenter(requiredViewOps, activity);
+        ((DataManagerPresenter)this.providedPresenterOps).setModelMVP(new Model());
     }
 
     @Provides @Singleton public ProvidedPresenterOps providePresenterForView(){

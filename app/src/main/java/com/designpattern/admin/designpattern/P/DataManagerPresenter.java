@@ -33,9 +33,12 @@ public class DataManagerPresenter implements ProvidedPresenterOps, RequiredPrese
 
 	public DataManagerPresenter(RequiredViewOps requiredViewOps, Activity activity) {
 		this.context = activity;
-        this.modelMVP = new Model();
 		this.viewMVP = requiredViewOps;
 		currentList.add(domainList.get(0));
+	}
+
+	public void setModelMVP(ProvidedModelOps providedModelOps){
+		this.modelMVP = providedModelOps;
 	}
 
 	private void getDataFromDomain(String domain) {
